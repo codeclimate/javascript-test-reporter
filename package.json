@@ -1,11 +1,19 @@
 {
-  "name": "javascript-test-reporter",
-  "version": "0.0.0",
+  "name": "codeclimate-test-reporter",
+  "version": "0.0.1",
   "description": "Code Climate test reporter client for javascript projects",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "Noah Davis",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "mocha": "*"
+  },
+  "dependencies": {
+    "lcov-parse": "0.0.6",
+    "request": "~2.34.0",
+    "execSync": "~1.0.1-pre"
+  }
 }
