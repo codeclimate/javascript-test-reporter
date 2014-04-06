@@ -6,14 +6,33 @@
   "scripts": {
     "test": "mocha"
   },
+  "bin": {
+    "codeclimate": "./bin/codeclimate.js"
+  },
   "author": "Noah Davis",
   "license": "MIT",
   "devDependencies": {
     "mocha": "*"
   },
+  "engines": {
+    "node": ">=0.8.6"
+  },
   "dependencies": {
     "lcov-parse": "0.0.6",
     "request": "~2.34.0",
     "execSync": "~1.0.1-pre"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/codeclimate/javascript-test-reporter.git"
+  },
+  "keywords": [
+    "coverage",
+    "testing",
+    "codeclimate"
+  ],
+  "bugs": {
+    "url": "https://github.com/codeclimate/javascript-test-reporter/issues"
+  },
+  "homepage": "https://github.com/codeclimate/javascript-test-reporter"
 }
