@@ -20,7 +20,7 @@
   "dependencies": {
     "lcov-parse": "0.0.6",
     "request": "~2.34.0",
-    "execSync": "~1.0.1-pre"
+    "async": "~0.7.0"
   },
   "repository": {
     "type": "git",

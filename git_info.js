@@ -1,35 +1,44 @@
-var sh = require('execSync');
 var crypto = require('crypto');
+var childProcess = require('child_process');
 
 module.exports = {
 
-  head: function() {
-    return sh.exec("git log -1 --pretty=format:'%H'").stdout;
-  },
-
-  committedAt: function() {
-    var timestamp = sh.exec("git log -1 --pretty=format:'%ct'").stdout;
-    timestamp = parseInt(timestamp);
-    if (isNaN(timestamp) || timestamp == 0) {
-      return null;
-    } else {
-      return timestamp;
-    }
-  },
-
-  branch: function() {
-    var branches = sh.exec("git branch").stdout.split("\n");
-    var returnBranch = null;
-    branches.forEach(function(val) {
-      if(val.charAt(0) == "*") {
-        returnBranch = val;
-      }
+  head: function(cb) {
+    childProcess.exec("git log -1 --pretty=format:'%H'", function (error, stdout, stderr) {
+      return cb(error, stdout);
     });
-    if (returnBranch) {
-      return returnBranch.replace("* ", "")
-    } else {
-      return null;
-    }
+  },
+
+  committedAt: function(cb) {
+    childProcess.exec("git log -1 --pretty=format:'%ct'", function (error, stdout, stderr) {
+      var result = null;
+      var timestamp = null;
+      if (stdout) {
+        timestamp = parseInt(stdout);
+        if (!isNaN(timestamp) && timestamp != 0) {
+          result = timestamp;
+        }
+      }
+      return cb(error, result);
+    });
+  },
+
+  branch: function(cb) {
+    childProcess.exec("git branch", function (error, stdout, stderr) {
+      var returnBranch = null;
+      if (stdout) {
+        var branches = stdout.split("\n");
+        branches.forEach(function(val) {
+          if(val.charAt(0) == "*") {
+            returnBranch = val;
+          }
+        });
+        if (returnBranch) {
+          returnBranch = returnBranch.replace("* ", "");
+        }
+      }
+      return cb(error, returnBranch);
+    });
   },
 
   calculateBlobId: function(content) {

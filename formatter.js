@@ -4,6 +4,7 @@ var fs = require('fs');
 var pjson = require('./package.json');
 var git  = require("./git_info");
 var ci  = require("./ci_info");
+var async = require("async");
 
 function Formatter(options) {
   this.options = options || {};
@@ -15,8 +16,9 @@ Formatter.prototype.rootDirectory = function() {
 
 Formatter.prototype.format = function(lcovData, callback) {
   var self = this;
-  lcovParse(lcovData, function(err, data) {
-    result = {
+
+  lcovParse(lcovData, function(parseError, data) {
+    var result = {
       source_files: self.sourceFiles(data),
       run_at: Date.now(),
       partial: false,
@@ -24,10 +26,24 @@ Formatter.prototype.format = function(lcovData, callback) {
         pwd: process.cwd(),
         package_version: pjson.version
       },
-      ci_service: ci.getInfo(),
-      git: self.gitGitInfo()
+      ci_service: ci.getInfo()
     }
-    callback(err, result);
+    async.parallel({
+      head: git.head,
+      branch: git.branch,
+      committed_at: git.committedAt
+    },
+    function(err, results) {
+      if (err) {
+        console.error(err.message);
+      }
+      result.git = {
+        head: results.head,
+        branch: results.branch,
+        committed_at: results.committed_at
+      }
+      return callback(parseError, result);
+    });
   });
 }
 
@@ -59,9 +75,9 @@ Formatter.prototype.sourceFiles = function(data) {
 
 Formatter.prototype.gitGitInfo = function() {
   return {
-    head: git.head(),
-    committed_at: git.committedAt(),
-    branch: git.branch()
+    head: git.headSync(),
+    committed_at: git.committedAtSync(),
+    branch: git.branchSync()
   };
 }
 
