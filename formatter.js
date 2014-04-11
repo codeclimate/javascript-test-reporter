@@ -73,12 +73,4 @@ Formatter.prototype.sourceFiles = function(data) {
   return source_files;
 }
 
-Formatter.prototype.gitGitInfo = function() {
-  return {
-    head: git.headSync(),
-    committed_at: git.committedAtSync(),
-    branch: git.branchSync()
-  };
-}
-
 module.exports = Formatter;
