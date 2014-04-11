@@ -18,8 +18,12 @@ process.stdin.on("end", function() {
     if (err) {
       console.error("A problem occurred parsing the lcov data", err);
     } else {
-      json['repo_token'] = process.env.CODECLIMATE_REPO_TOKEN;
-      client.postJson(json);
+      if (process.env.CC_OUTPUT == "stdout") {
+        console.log(json);
+      } else {
+        json['repo_token'] = process.env.CODECLIMATE_REPO_TOKEN;
+        client.postJson(json);
+      }
     }
   });
 });
