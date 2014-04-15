@@ -4,10 +4,17 @@ var fs        = require('fs');
 
 module.exports = function(grunt) {
   grunt.registerMultiTask('codeclimate', 'Report Coverage with Code Climate', function() {
+    var input = '';
     
-    var input = fs.readFileSync(this.src, 'utf8');
+    //TODO: support multiple lcov files.
+    this.files.forEach(function(f) {
+      if (f.src) {
+        input = fs.readFileSync(f.src[0], 'utf8');
+      }
+    });
+    
 
-    formatter = new Formatter()l
+    formatter = new Formatter();
     formatter.format(input, function(err, json) {
       if (err) {
         console.error("A problem occurred parsing the lcov data", err);
