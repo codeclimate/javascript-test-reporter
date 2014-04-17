@@ -17,11 +17,11 @@ first step is to create an account at: [https://codeclimate.com](https://codecli
 
           $ npm install -g codeclimate-test-reporter
 
-1. Specifying your repo token as an environment variable, pipe lcov coverage data to the codeclimate npm script.
+1. Specifying your repo token as an environment variable, send lcov coverage data to the codeclimate npm script.
 
       For example, if your coverage data resides in a "lcov.info" file:
 
-          CODECLIMATE_REPO_TOKEN=ABCD11110000000 cat lcov.info | codeclimate
+          CODECLIMATE_REPO_TOKEN=ABCD11110000000 codeclimate < lcov.info
 
 The `CODECLIMATE_REPO_TOKEN` value is provided after you add your repo to your
 Code Climate account by clicking on "Setup Test Coverage" on the right hand side of your feed.
