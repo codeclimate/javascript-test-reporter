@@ -14,6 +14,16 @@ var options = {
   timeout: 5000
 };
 
+if (process.env.https_proxy) {
+  options.proxy = process.env.https_proxy;
+} else if (process.env.http_proxy) {
+  options.proxy = process.env.http_proxy;
+} else if (process.env.HTTPS_PROXY) {
+  options.proxy = process.env.HTTPS_PROXY;
+} else if (process.env.HTTP_PROXY) {
+  options.proxy = process.env.HTTP_PROXY;
+}
+
 var postJson = function(data) {
 
   parts = url.parse(options.url)
