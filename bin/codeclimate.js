@@ -1,7 +1,5 @@
 #!/usr/bin/env node
-
-var Formatter = require("../formatter");
-var client         = require('../http_client');
+var codeclimate = require('../lib');
 
 process.stdin.resume();
 process.stdin.setEncoding("utf8");
@@ -20,17 +18,5 @@ if(repo_token == undefined || repo_token.trim() == "") {
 }
 
 process.stdin.on("end", function() {
-  formatter = new Formatter()
-  formatter.format(input, function(err, json) {
-    if (err) {
-      console.error("A problem occurred parsing the lcov data", err);
-    } else {
-      if (process.env.CC_OUTPUT == "stdout") {
-        console.log(json);
-      } else {
-        json['repo_token'] = repo_token
-        client.postJson(json);
-      }
-    }
-  });
+  codeclimate(input, repo_token, /*{output: 'stdout'},*/ console.log);
 });
