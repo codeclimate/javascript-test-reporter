@@ -36,6 +36,14 @@ module.exports = {
         build_identifier: env.TDDIUM_SESSION_ID,
         worker_id:        env.TDDIUM_TID
       }
+    } else if (env.WERCKER) {
+      return {
+        name:               "wercker",
+        build_identifier:   env.WERCKER_BUILD_ID,
+        build_url:          env.WERCKER_BUILD_URL,
+        branch:             env.WERCKER_GIT_BRANCH,
+        commit_sha:         env.WERCKER_GIT_COMMIT
+      }
     } else if (env.CI_NAME && env.CI_NAME.match(/codeship/i)) {
       return {
         name:             "codeship",
