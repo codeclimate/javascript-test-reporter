@@ -1,5 +1,8 @@
 # codeclimate-test-reporter
 
+[![Code Climate](https://codeclimate.com/github/codeclimate/javascript-test-reporter/badges/gpa.svg)](https://codeclimate.com/github/codeclimate/javascript-test-reporter)
+[![Test Coverage](https://codeclimate.com/github/codeclimate/javascript-test-reporter/badges/coverage.svg)](https://codeclimate.com/github/codeclimate/javascript-test-reporter)
+
 Supplies a script which accepts lcov data over standard input, formats the coverage data and sends it to Code Climate.
 
 Code Climate - [https://codeclimate.com](https://codeclimate.com)

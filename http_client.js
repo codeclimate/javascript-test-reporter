@@ -2,7 +2,7 @@ var request = require("request");
 var url     = require("url");
 var pjson   = require('./package.json');
 
-var host = process.env.CODECLIMATE_API_HOST || "https://codeclimate.com"
+var host = process.env.CODECLIMATE_API_HOST || "https://codeclimate.com";
 
 var options = {
   url: host + "/test_reports",
@@ -26,7 +26,7 @@ if (process.env.https_proxy) {
 
 var postJson = function(data) {
 
-  parts = url.parse(options.url)
+  parts = url.parse(options.url);
 
   options.body = JSON.stringify(data);
   console.log("Sending test coverage results to " + parts.host + " ...");
@@ -38,13 +38,13 @@ var postJson = function(data) {
       if (response.statusCode >= 200 && response.statusCode < 300) {
         console.log("Test coverage data sent.");
       } else if (response.statusCode == 401) {
-        console.log("An invalid CODECLIMATE_REPO_TOKEN repo token was specified.")
+        console.log("An invalid CODECLIMATE_REPO_TOKEN repo token was specified.");
       } else {
         console.log("Status code: " + response.statusCode);
       }
     }
   });
 
-}
+};
 
 module.exports = { postJson: postJson };
