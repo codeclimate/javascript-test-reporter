@@ -23,7 +23,7 @@ Formatter.prototype.format = function(lcovData, callback) {
       run_at: Date.now(),
       partial: false,
       environment: {
-        pwd: process.cwd(),
+        pwd: process.cwd().split(path.sep).join('/'),
         package_version: pjson.version
       },
       ci_service: ci.getInfo()
@@ -63,6 +63,9 @@ Formatter.prototype.sourceFiles = function(data) {
     });
 
     var fileName = path.relative(self.rootDirectory(), elem.file);
+    if (path.sep !== '/') {
+      fileName = fileName.split(path.sep).join('/');
+    }
 
     source_files.push({
       name: fileName,

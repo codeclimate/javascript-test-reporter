@@ -4,13 +4,13 @@ var childProcess = require('child_process');
 module.exports = {
 
   head: function(cb) {
-    childProcess.exec("git log -1 --pretty=format:'%H'", function (error, stdout, stderr) {
+    childProcess.exec("git log -1 --pretty=format:%H", function (error, stdout, stderr) {
       return cb(error, stdout);
     });
   },
 
   committedAt: function(cb) {
-    childProcess.exec("git log -1 --pretty=format:'%ct'", function (error, stdout, stderr) {
+    childProcess.exec("git log -1 --pretty=format:%ct", function (error, stdout, stderr) {
       var result = null;
       var timestamp = null;
       if (stdout) {
