@@ -18,9 +18,9 @@
     "node": ">=0.8.6"
   },
   "dependencies": {
+    "async": "~0.7.0",
     "lcov-parse": "0.0.6",
-    "request": "~2.34.0",
-    "async": "~0.7.0"
+    "request": "~2.34.0"
   },
   "repository": {
     "type": "git",

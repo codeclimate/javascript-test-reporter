@@ -5,7 +5,7 @@ var Formatter = require('../formatter.js');
 describe('JSON', function(){
 
   var lcovFixture = fs.readFileSync('test/fixtures/lcov.info').toString();
-  var formatter = new Formatter({rootDirectory: "/Users/noah/p/request"});
+  var formatter = new Formatter({rootDirectory: "./node_modules/request"});
 
   describe('parse', function() {
     it("should return the correct filenames", function(done) {
