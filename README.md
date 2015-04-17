@@ -50,7 +50,7 @@ If you're having trouble setting up or working with our test coverage feature, [
 ## Contributions
 
 Patches, bug fixes, feature requests, and pull requests are welcome on the
-GitHub page for this project: [https://github.com/codeclimate/javascript-test-reporter](https://github.com/codeclimate/ruby-test-reporter)
+GitHub page for this project: [https://github.com/codeclimate/javascript-test-reporter](https://github.com/codeclimate/javascript-test-reporter)
 
 ## Copyright
 
