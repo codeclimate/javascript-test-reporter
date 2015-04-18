@@ -1,6 +1,7 @@
 var assert = require("assert");
 var fs = require('fs')
 var Formatter = require('../formatter.js');
+var CiInfo = require('../ci_info');
 
 describe('JSON', function(){
 
@@ -19,4 +20,33 @@ describe('JSON', function(){
       });
     });
   });
-})
+});
+
+describe('ci_info', function() {
+  describe('#getInfo', function() {
+    var bupenv = Object.keys(process.env);
+
+    afterEach(function(){
+      for(var pk in process.env) {
+        if (bupenv.indexOf(pk) < 0) {
+          delete process.env[pk];
+        }
+      }
+    });
+
+    it('should return travis-ci as name if process.env.TRAVIS is set', function() {
+      process.env.TRAVIS = 'true';
+
+      var ci = CiInfo.getInfo();
+      assert.equal(ci.name, 'travis-ci');
+    });
+
+    it('should return appveyor as name if process.env.APPVEYOR is set', function() {
+      process.env.APPVEYOR = 'true';
+
+      var ci = CiInfo.getInfo();
+      assert.equal(ci.name, 'appveyor');
+    });
+
+  });
+});
