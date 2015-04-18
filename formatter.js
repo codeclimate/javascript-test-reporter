@@ -17,6 +17,12 @@ Formatter.prototype.rootDirectory = function() {
 Formatter.prototype.format = function(lcovData, callback) {
   var self = this;
 
+  // Fix for absolute pathing in lscov.info data
+  if(lcovData.indexOf(process.cwd())>-1){
+    var pwdRegex = new RegExp(process.cwd(), 'gi');
+    lcovData = lcovData.replace(pwdRegex, ".");
+  }
+
   lcovParse(lcovData, function(parseError, data) {
     var result = {
       source_files: self.sourceFiles(data),
@@ -51,7 +57,13 @@ Formatter.prototype.sourceFiles = function(data) {
   var source_files = [];
   var self = this;
   data.forEach(function(elem, index) {
-    var content = fs.readFileSync(elem.file).toString();
+    var filepath = elem.file;
+    if(self.options.rootDirectory){
+      filepath = process.cwd()+'/'+
+        self.options.rootDirectory.split('./')[1]+'/'+
+        elem.file.split('./')[1];
+    }
+    var content = fs.readFileSync(filepath).toString();
     var numLines = content.split("\n").size
 
     var coverage = new Array(numLines);
@@ -62,7 +74,7 @@ Formatter.prototype.sourceFiles = function(data) {
       coverage[lineDetail.line - 1] = lineDetail.hit
     });
 
-    var fileName = path.relative(self.rootDirectory(), elem.file);
+    var fileName = path.relative(self.rootDirectory(), filepath);
 
     source_files.push({
       name: fileName,

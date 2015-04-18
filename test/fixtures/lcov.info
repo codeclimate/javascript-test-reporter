@@ -1,5 +1,5 @@
 TN:
-SF:/Users/noah/p/request/lib/cookies.js
+SF:./lib/cookies.js
 FN:7,(anonymous_1)
 FN:17,RequestJar
 FN:20,(anonymous_3)
@@ -55,7 +55,7 @@ BRF:16
 BRH:5
 end_of_record
 TN:
-SF:/Users/noah/p/request/lib/copy.js
+SF:./lib/copy.js
 FN:2,copy
 FN:4,(anonymous_2)
 FNF:2
