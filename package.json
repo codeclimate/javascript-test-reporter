@@ -2,7 +2,7 @@
   "name": "codeclimate-test-reporter",
   "version": "0.0.4",
   "description": "Code Climate test reporter client for javascript projects",
-  "main": "index.js",
+  "main": "lib",
   "scripts": {
     "test": "mocha"
   },
