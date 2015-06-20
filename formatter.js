@@ -51,7 +51,17 @@ Formatter.prototype.sourceFiles = function(data) {
   var source_files = [];
   var self = this;
   data.forEach(function(elem, index) {
-    var content = fs.readFileSync(elem.file).toString();
+    var content;
+    try {
+      content = fs.readFileSync(elem.file).toString();
+    } catch (e) {
+      if (e.code === 'ENOENT') {
+        console.log('The file ' + elem.file + ' does not exist and will be skipped.');
+        content = '';
+      } else {
+        throw e;
+      }
+    }
     var numLines = content.split("\n").size
 
     var coverage = new Array(numLines);
