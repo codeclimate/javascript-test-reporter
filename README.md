@@ -36,7 +36,7 @@ first step is to create an account at: [https://codeclimate.com](https://codecli
 
       For example, if your coverage data resides in a "lcov.info" file:
 
-          CODECLIMATE_REPO_TOKEN=ABCD11110000000 codeclimate < lcov.info
+          CODECLIMATE_REPO_TOKEN=ABCD11110000000 codeclimate-test-reporter < lcov.info
 
 The `CODECLIMATE_REPO_TOKEN` value is provided after you add your repo to your
 Code Climate account by clicking on "Setup Test Coverage" on the right hand side of your feed.
