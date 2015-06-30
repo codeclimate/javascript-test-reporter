@@ -1,6 +1,6 @@
 {
   "name": "codeclimate-test-reporter",
-  "version": "0.0.4",
+  "version": "0.1.0",
   "description": "Code Climate test reporter client for javascript projects",
   "main": "index.js",
   "scripts": {
