@@ -7,7 +7,7 @@
     "test": "mocha"
   },
   "bin": {
-    "codeclimate": "./bin/codeclimate.js"
+    "codeclimate-test-reporter": "./bin/codeclimate.js"
   },
   "author": "Noah Davis",
   "license": "MIT",
