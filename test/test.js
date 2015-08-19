@@ -48,5 +48,12 @@ describe('ci_info', function() {
       assert.equal(ci.name, 'appveyor');
     });
 
+    it('should return buildkite as name if process.env.BUILDKITE is set', function() {
+      process.env.BUILDKITE = 'true';
+
+      var ci = CiInfo.getInfo();
+      assert.equal(ci.name, 'buildkite');
+    });
+
   });
 });
