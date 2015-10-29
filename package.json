@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "lcov-parse": "0.0.6",
-    "request": "~2.34.0",
+    "request": "~2.40.0",
     "async": "~0.7.0"
   },
   "repository": {
