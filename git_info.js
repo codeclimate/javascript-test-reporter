@@ -15,7 +15,7 @@ module.exports = {
       var timestamp = null;
       if (stdout) {
         timestamp = parseInt(stdout);
-        if (!isNaN(timestamp) && timestamp != 0) {
+        if (!isNaN(timestamp) && timestamp !== 0) {
           result = timestamp;
         }
       }
@@ -49,4 +49,4 @@ module.exports = {
     return shasum.digest("hex");
   }
 
-}
+};
