@@ -1,20 +1,22 @@
-var assert = require("assert");
-var fs = require('fs')
-var Formatter = require('../formatter.js');
-var CiInfo = require('../ci_info');
+var assert = require('assert'),
+  fs = require('fs'),
+  Formatter = require('../formatter.js'),
+  CiInfo = require('../ci_info');
 
-describe('JSON', function(){
+describe('JSON', function() {
 
   var lcovFixture = fs.readFileSync('test/fixtures/lcov.info').toString();
-  var formatter = new Formatter({rootDirectory: "/Users/noah/p/request"});
+  var formatter = new Formatter({
+    rootDirectory: '/Users/noah/p/request'
+  });
 
   describe('parse', function() {
-    it("should return the correct filenames", function(done) {
+    it('should return the correct filenames', function(done) {
       formatter.format(lcovFixture, function(err, data) {
         var names = data.source_files.map(function(elem) {
           return elem.name;
         });
-        expected = ["lib/cookies.js", "lib/copy.js"]
+        expected = ['lib/cookies.js', 'lib/copy.js'];
         assert.deepEqual(expected, names);
         done();
       });
@@ -26,8 +28,8 @@ describe('ci_info', function() {
   describe('#getInfo', function() {
     var bupenv = Object.keys(process.env);
 
-    afterEach(function(){
-      for(var pk in process.env) {
+    afterEach(function() {
+      for (var pk in process.env) {
         if (bupenv.indexOf(pk) < 0) {
           delete process.env[pk];
         }
