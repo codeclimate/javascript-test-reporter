@@ -1,7 +1,10 @@
 # codeclimate-test-reporter
 
-[![Code Climate](https://codeclimate.com/github/codeclimate/javascript-test-reporter/badges/gpa.svg)](https://codeclimate.com/github/codeclimate/javascript-test-reporter)
-[![Test Coverage](https://codeclimate.com/github/codeclimate/javascript-test-reporter/badges/coverage.svg)](https://codeclimate.com/github/codeclimate/javascript-test-reporter)
+[![npm version][npm-badge]][npm-url]
+[![Build Status][travis-badge]][travis-url]
+[![Coverage Status][coverage-badge]][coverage-url]
+[![Code Climate][codeclimate-badge]][codeclimate-url]
+[![Dependency Status][david-badge]][david-url]
 
 Supplies a script which accepts lcov data over standard input, formats the coverage data and sends it to Code Climate.
 
@@ -55,3 +58,16 @@ GitHub page for this project: [https://github.com/codeclimate/javascript-test-re
 ## Copyright
 
 See LICENSE.txt
+
+[npm-badge]: https://img.shields.io/npm/v/codeclimate-test-reporter.svg
+[npm-url]: https://www.npmjs.com/package/codeclimate-test-reporter
+[travis-badge]: https://api.travis-ci.org/codeclimate/javascript-test-reporter.svg
+[travis-url]: https://travis-ci.org/codeclimate/javascript-test-reporter
+[david-badge]: https://david-dm.org/codeclimate/javascript-test-reporter.svg
+[david-url]: https://david-dm.org/codeclimate/javascript-test-reporter
+[experimental-badge]: https://img.shields.io/badge/stability-experimental-DD5F0A.svg
+[experimental-url]: https://nodejs.org/api/documentation.html#documentation_stability_index
+[codeclimate-badge]: https://codeclimate.com/github/codeclimate/javascript-test-reporter/badges/gpa.svg
+[codeclimate-url]: https://codeclimate.com/github/codeclimate/javascript-test-reporter
+[coverage-badge]: https://codeclimate.com/github/codeclimate/javascript-test-reporter/badges/coverage.svg
+[coverage-url]: https://codeclimate.com/github/codeclimate/javascript-test-reporter/coverage
