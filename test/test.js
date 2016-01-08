@@ -26,6 +26,10 @@ describe('ci_info', function() {
   describe('#getInfo', function() {
     var bupenv = Object.keys(process.env);
 
+    beforeEach(function(){
+      delete process.env['TRAVIS'];
+    });
+
     afterEach(function(){
       for(var pk in process.env) {
         if (bupenv.indexOf(pk) < 0) {
