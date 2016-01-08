@@ -15,7 +15,7 @@
     "mocha": "*"
   },
   "engines": {
-    "node": ">=0.8.6"
+    "node": ">=0.10.0"
   },
   "dependencies": {
     "lcov-parse": "0.0.6",
