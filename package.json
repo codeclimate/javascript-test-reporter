@@ -15,12 +15,12 @@
     "mocha": "*"
   },
   "engines": {
-    "node": ">=0.8.6"
+    "node": ">=0.10.0"
   },
   "dependencies": {
-    "lcov-parse": "0.0.6",
-    "request": "~2.40.0",
-    "async": "~0.7.0"
+    "lcov-parse": "0.0.10",
+    "request": "~2.67.0",
+    "async": "~1.5.2"
   },
   "repository": {
     "type": "git",
