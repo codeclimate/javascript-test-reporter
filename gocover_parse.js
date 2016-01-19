@@ -1,14 +1,14 @@
 'use strict'
 
 module.exports = function(data, cb) {
-  var memo = {}
-  var parsedData = []
+  var memo = {};
+  var parsedData = [];
 
   var lines = data.split('\n');
 
   // Skip mode line
   lines.shift();
-  
+
   lines.forEach(function(line) {
     // coverage line syntax:
     // Filename:<start line>.<start column>,<end line>.<end column>.<# of statements>.<hit count>
@@ -33,7 +33,7 @@ module.exports = function(data, cb) {
       }
       parsedData.push(memo[filename])
     }
-    
+
     var lineData = memo[filename].lines;
 
     var i = startLine;
