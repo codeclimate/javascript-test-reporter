@@ -14,8 +14,8 @@ module.exports = {
       var result = null;
       var timestamp = null;
       if (stdout) {
-        timestamp = parseInt(stdout);
-        if (!isNaN(timestamp) && timestamp != 0) {
+        timestamp = parseInt(stdout, 10);
+        if (!isNaN(timestamp) && timestamp !== 0) {
           result = timestamp;
         }
       }
@@ -29,7 +29,7 @@ module.exports = {
       if (stdout) {
         var branches = stdout.split("\n");
         branches.forEach(function(val) {
-          if(val.charAt(0) == "*") {
+          if(val.charAt(0) === "*") {
             returnBranch = val;
           }
         });
@@ -49,4 +49,4 @@ module.exports = {
     return shasum.digest("hex");
   }
 
-}
+};
