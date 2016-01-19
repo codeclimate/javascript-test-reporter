@@ -23,7 +23,7 @@ process.stdin.on("end", function() {
   formatter = new Formatter()
   formatter.format(input, function(err, json) {
     if (err) {
-      console.error("A problem occurred parsing the lcov data", err);
+      console.error("A problem occurred parsing the coverage data", err);
     } else {
       if (process.env.CC_OUTPUT == "stdout") {
         console.log(json);
