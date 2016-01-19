@@ -5,8 +5,10 @@ var CiInfo = require('../ci_info');
 
 describe('JSON', function(){
 
+  var rootDirectory = "/Users/noah/p/request";
   var lcovFixture = fs.readFileSync('test/fixtures/lcov.info').toString();
-  var formatter = new Formatter({rootDirectory: "/Users/noah/p/request"});
+  var gocoverFixture = fs.readFileSync('test/fixtures/cover.out').toString();
+  var formatter = new Formatter({rootDirectory: rootDirectory});
 
   describe('parse', function() {
     it("should return the correct filenames", function(done) {
@@ -15,6 +17,24 @@ describe('JSON', function(){
           return elem.name;
         });
         expected = ["lib/cookies.js", "lib/copy.js"]
+        assert.deepEqual(expected, names);
+        done();
+      });
+    });
+  });
+
+  describe('gocover', function() {
+    it('should return the correct filenames', function(done) {
+      process.env.GOPATH = rootDirectory; // files will be at $GOPATH/src
+      formatter.format(gocoverFixture, function(err, data) {
+        var names = data.source_files.map(function(elem) {
+          return elem.name;
+        });
+        var expected = [
+          'src/golang.org/x/tools/cmd/cover/cover.go',
+          'src/golang.org/x/tools/cmd/cover/func.go',
+          'src/golang.org/x/tools/cmd/cover/html.go'
+        ];
         assert.deepEqual(expected, names);
         done();
       });
