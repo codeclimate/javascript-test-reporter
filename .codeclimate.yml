@@ -1,0 +1,20 @@
+---
+engines:
+  requiresafe:
+    enabled: true
+  duplication:
+    enabled: true
+    config:
+      languages:
+      - javascript
+  eslint:
+    enabled: true
+  fixme:
+    enabled: true
+ratings:
+  paths:
+  - "**.js"
+  - "npm-shrinkwrap.json"
+exclude_paths:
+- node_modules/**/*
+- test/**/*

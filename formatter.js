@@ -12,7 +12,7 @@ function Formatter(options) {
 
 Formatter.prototype.rootDirectory = function() {
   return this.options.rootDirectory || process.cwd();
-}
+};
 
 Formatter.prototype.format = function(lcovData, callback) {
   var self = this;
@@ -27,7 +27,7 @@ Formatter.prototype.format = function(lcovData, callback) {
         package_version: pjson.version
       },
       ci_service: ci.getInfo()
-    }
+    };
     async.parallel({
       head: git.head,
       branch: git.branch,
@@ -41,11 +41,11 @@ Formatter.prototype.format = function(lcovData, callback) {
         head: results.head,
         branch: results.branch,
         committed_at: results.committed_at
-      }
+      };
       return callback(parseError, result);
     });
   });
-}
+};
 
 Formatter.prototype.sourceFiles = function(data) {
   var source_files = [];
@@ -62,14 +62,14 @@ Formatter.prototype.sourceFiles = function(data) {
         throw e;
       }
     }
-    var numLines = content.split("\n").size
+    var numLines = content.split("\n").size;
 
     var coverage = new Array(numLines);
     coverage.forEach(function(elem, index, arr) {
       arr[index] = null;
     });
     elem.lines.details.forEach(function(lineDetail) {
-      coverage[lineDetail.line - 1] = lineDetail.hit
+      coverage[lineDetail.line - 1] = lineDetail.hit;
     });
 
     var fileName = path.relative(self.rootDirectory(), elem.file);
@@ -84,6 +84,6 @@ Formatter.prototype.sourceFiles = function(data) {
     });
   });
   return source_files;
-}
+};
 
 module.exports = Formatter;

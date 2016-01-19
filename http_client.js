@@ -22,7 +22,7 @@ if (proxy) {
 
 var postJson = function(data) {
 
-  parts = url.parse(options.url);
+  var parts = url.parse(options.url);
 
   options.body = JSON.stringify(data);
   console.log("Sending test coverage results to " + parts.host + " ...");
@@ -33,7 +33,7 @@ var postJson = function(data) {
     if (response) {
       if (response.statusCode >= 200 && response.statusCode < 300) {
         console.log("Test coverage data sent.");
-      } else if (response.statusCode == 401) {
+      } else if (response.statusCode === 401) {
         console.log("An invalid CODECLIMATE_REPO_TOKEN repo token was specified.");
       } else {
         console.log("Status code: " + response.statusCode);
