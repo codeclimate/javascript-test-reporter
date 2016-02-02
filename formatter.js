@@ -16,7 +16,7 @@ Formatter.prototype.rootDirectory = function() {
 };
 
 Formatter.prototype.parse = function(data, callback) {
-    if (/^TN:/.test(data)) {
+    if (/^SF:/m.test(data)) {
         lcovParse(data, callback);
     } else if (/^mode:/.test(data)) {
         gocoverParse(data, callback);
@@ -29,6 +29,10 @@ Formatter.prototype.format = function(coverageData, callback) {
   var self = this;
 
   self.parse(coverageData, function(parseError, data) {
+    if (parseError) {
+      throw parseError;
+    }
+
     var result = {
       source_files: self.sourceFiles(data),
       run_at: Date.now(),
