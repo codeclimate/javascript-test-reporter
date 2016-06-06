@@ -94,7 +94,7 @@ Formatter.prototype.sourceFiles = function(data) {
 
     source_files.push({
       name: fileName,
-      blob_id: git.calculateBlobId(content),
+      blob_id: git.blobId(elem.file, content),
       coverage: JSON.stringify(coverage)
     });
   });
