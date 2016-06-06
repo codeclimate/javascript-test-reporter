@@ -1,6 +1,6 @@
 ---
 engines:
-  requiresafe:
+  nodesecurity:
     enabled: true
   duplication:
     enabled: true
