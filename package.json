@@ -4,7 +4,7 @@
   "description": "Code Climate test reporter client for javascript projects",
   "main": "index.js",
   "scripts": {
-    "test": "mocha"
+    "test": "istanbul cover --report lcov _mocha"
   },
   "bin": {
     "codeclimate-test-reporter": "./bin/codeclimate.js"
@@ -12,6 +12,7 @@
   "author": "Noah Davis",
   "license": "MIT",
   "devDependencies": {
+    "istanbul": "^0.4.3",
     "mocha": "*"
   },
   "engines": {
