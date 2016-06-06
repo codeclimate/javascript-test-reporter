@@ -1,6 +1,14 @@
 var crypto = require('crypto');
 var childProcess = require('child_process');
 
+function calculateBlobId(content) {
+  var header  = 'blob ' + content.length + '\0';
+  var store   = header + content;
+  var shasum  = crypto.createHash('sha1');
+  shasum.update(store);
+  return shasum.digest("hex");
+}
+
 module.exports = {
 
   head: function(cb) {
@@ -41,12 +49,21 @@ module.exports = {
     });
   },
 
-  calculateBlobId: function(content) {
-    var header  = 'blob ' + content.length + '\0';
-    var store   = header + content;
-    var shasum  = crypto.createHash('sha1');
-    shasum.update(store);
-    return shasum.digest("hex");
-  }
+  calculateBlobId: calculateBlobId,
 
+  blobId: function(path, content) {
+    var stdout, returnBlobId = null;
+
+    try {
+      stdout = childProcess.execSync("git hash-object " + path, { stdio: [0, "pipe", "ignore"] });
+    } catch (e) { }
+
+    if (stdout) {
+      returnBlobId = stdout.toString().trim();
+    } else {
+      returnBlobId = calculateBlobId(content);
+    }
+
+    return returnBlobId;
+  }
 };
