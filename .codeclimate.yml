@@ -1,7 +1,5 @@
 ---
 engines:
-  nodesecurity:
-    enabled: true
   duplication:
     enabled: true
     config:
@@ -14,7 +12,6 @@ engines:
 ratings:
   paths:
   - "**.js"
-  - "npm-shrinkwrap.json"
 exclude_paths:
 - node_modules/**/*
 - test/**/*
