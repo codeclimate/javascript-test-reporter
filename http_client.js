@@ -20,7 +20,10 @@ if (proxy) {
   options.proxy = proxy;
 }
 
-var postJson = function(data) {
+var postJson = function(data, opts) {
+  opts = opts || {};
+
+  options.rejectUnauthorized = !opts.skip_certificate;
 
   var parts = url.parse(options.url);
 
@@ -28,6 +31,17 @@ var postJson = function(data) {
   console.log("Sending test coverage results to " + parts.host + " ...");
   request(options, function(error, response, body) {
     if (error) {
+      if (error.code === 'UNABLE_TO_VERIFY_LEAF_SIGNATURE') {
+        console.error(
+          '\n' +
+          'It looks like you might be trying to send coverage to an\n' +
+          'enterprise version of CodeClimate with a (probably) invalid or\n' +
+          'incorrectly configured certificate chain. If you are sure about\n' +
+          'where you are sending your data, add the -S/--skip-cert flag and\n' +
+          'try again. Run with --help for more info.\n'
+        );
+      }
+
       console.error("A problem occurred", error);
     }
     if (response) {

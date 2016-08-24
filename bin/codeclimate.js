@@ -1,7 +1,15 @@
 #!/usr/bin/env node
 
+var commander = require("commander");
+var pkg = require("../package.json");
 var Formatter = require("../formatter");
-var client         = require('../http_client');
+var client = require('../http_client');
+
+commander
+  .version(pkg.version)
+  .usage('[options] < <file>')
+  .option("-S, --skip-cert", "skips verification of the chain of certificate")
+  .parse(process.argv);
 
 process.stdin.resume();
 process.stdin.setEncoding("utf8");
@@ -9,7 +17,7 @@ process.stdin.setEncoding("utf8");
 var input = "";
 
 process.stdin.on("data", function(chunk) {
-    input += chunk;
+  input += chunk;
 });
 
 var repo_token = process.env.CODECLIMATE_REPO_TOKEN;
@@ -30,7 +38,9 @@ process.stdin.on("end", function() {
         console.log(json);
       } else {
         json['repo_token'] = repo_token;
-        client.postJson(json);
+        client.postJson(json, {
+          skip_certificate: commander.skipCert
+        });
       }
     }
   });
