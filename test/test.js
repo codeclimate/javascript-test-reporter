@@ -1,5 +1,5 @@
 var assert = require("assert");
-var fs = require('fs')
+var fs = require('fs');
 var Formatter = require('../formatter.js');
 var CiInfo = require('../ci_info');
 
@@ -16,7 +16,7 @@ describe('JSON', function(){
         var names = data.source_files.map(function(elem) {
           return elem.name;
         });
-        expected = ["lib/cookies.js", "lib/copy.js"]
+        var expected = ["lib/cookies.js", "lib/copy.js"];
         assert.deepEqual(expected, names);
         done();
       });
