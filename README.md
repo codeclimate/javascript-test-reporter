@@ -14,7 +14,6 @@ Code Climate - [https://codeclimate.com](https://codeclimate.com)
 
 Across the many different testing frameworks, setups, and environments, there are lots of variables at play. Before setting up test coverage, it's important to understand what we do and do not currently support:
 
-* **Default branch only:** We only support test coverage for your [default branch](http://docs.codeclimate.com/article/151-glossary-default-branch). Be sure to check out this branch before running your tests.
 * **Single payload:** We currently only support a single test coverage payload per commit. If you run your tests in multiple steps, or via parallel tests, Code Climate will only process the first payload that we receive. If you are using a CI, be sure to check if you are running your tests in a parallel mode.
 
   **Note:** There is one exception to this rule. We've specifically built an integration with [Solano Labs](https://www.solanolabs.com/) to support parallel tests.
