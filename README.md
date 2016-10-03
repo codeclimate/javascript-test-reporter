@@ -48,6 +48,18 @@ Code Climate account by clicking on "Setup Test Coverage" on the right hand side
 
 Please contact hello@codeclimate.com if you need any assistance setting this up.
 
+## Usage
+
+```
+Usage: codeclimate [options] < <file>
+
+Options:
+
+  -h, --help       output usage information
+  -V, --version    output the version number
+  -S, --skip-cert  skips verification of the chain of certificate
+```
+
 ## Troubleshooting
 
 If you're having trouble setting up or working with our test coverage feature, [see our detailed help doc](http://docs.codeclimate.com/article/220-help-im-having-trouble-with-test-coverage), which covers the most common issues encountered.
