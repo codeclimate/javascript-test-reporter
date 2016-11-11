@@ -12,12 +12,20 @@ function calculateBlobId(content) {
 module.exports = {
 
   head: function(cb) {
+    if (process.env.GIT_HEAD) {
+      return cb(null, process.env.GIT_HEAD);
+    }
+
     childProcess.exec("git log -1 --pretty=format:%H", function (error, stdout, stderr) {
       return cb(error, stdout);
     });
   },
 
   committedAt: function(cb) {
+    if (process.env.GIT_COMMITTED_AT) {
+      return cb(null, process.env.GIT_COMMITTED_AT);
+    }
+
     childProcess.exec("git log -1 --pretty=format:%ct", function (error, stdout, stderr) {
       var result = null;
       var timestamp = null;
@@ -32,6 +40,10 @@ module.exports = {
   },
 
   branch: function(cb) {
+    if (process.env.GIT_BRANCH) {
+      return cb(null, process.env.GIT_BRANCH);
+    }
+
     childProcess.exec("git branch", function (error, stdout, stderr) {
       var returnBranch = null;
       if (stdout) {
