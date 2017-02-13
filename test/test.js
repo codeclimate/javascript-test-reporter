@@ -79,5 +79,11 @@ describe('ci_info', function() {
       assert.equal(ci.name, 'buildkite');
     });
 
+    it('should return gitlab-ci as name if process.env.GITLAB_CI is set', function() {
+      process.env.GITLAB_CI = 'true';
+
+      var ci = CiInfo.getInfo();
+      assert.equal(ci.name, 'gitlab-ci');
+    });
   });
 });
