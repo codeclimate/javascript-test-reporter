@@ -48,6 +48,7 @@ describe('ci_info', function() {
 
     beforeEach(function(){
       delete process.env['TRAVIS'];
+      delete process.env['CIRCLECI'];
     });
 
     afterEach(function(){
