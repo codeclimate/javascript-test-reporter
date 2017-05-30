@@ -16,7 +16,7 @@
     "mocha": "^2.5.3"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">= 4"
   },
   "dependencies": {
     "async": "~1.5.2",
