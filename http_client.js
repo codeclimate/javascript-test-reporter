@@ -11,6 +11,7 @@ var options = {
     "User-Agent": "Code Climate (JavaScript Test Reporter v" + pjson.version + ")",
     "Content-Type": "application/json"
   },
+  rejectUnauthorized: false,
   timeout: 5000
 };
 
