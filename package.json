@@ -19,10 +19,10 @@
     "node": ">= 4"
   },
   "dependencies": {
-    "async": "~1.5.2",
-    "commander": "2.9.0",
-    "lcov-parse": "0.0.10",
-    "request": "~2.79.0"
+    "async": "~2.5.0",
+    "commander": "2.11.0",
+    "lcov-parse": "1.0.0",
+    "request": "~2.81.0"
   },
   "repository": {
     "type": "git",
