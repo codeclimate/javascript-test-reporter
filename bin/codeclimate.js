@@ -9,7 +9,7 @@ commander
   .version(pkg.version)
   .usage('[options] < <file>')
   .option("-S, --skip-cert", "skips verification of the chain of certificate")
-  .option("-T, --timeout <timeout>", "manually sets a timeout in ms (default: 5000)")
+  .option("-T, --timeout <ms>", "manually sets a timeout (default: 5000)")
   .parse(process.argv);
 
 process.stdin.resume();
