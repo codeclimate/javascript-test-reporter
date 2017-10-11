@@ -25,6 +25,10 @@ var postJson = function(data, opts) {
 
   options.rejectUnauthorized = !opts.skip_certificate;
 
+  if (opts.timeout !== undefined) {
+    options.timeout = opts.timeout;
+  }
+
   var parts = url.parse(options.url);
 
   options.body = JSON.stringify(data);

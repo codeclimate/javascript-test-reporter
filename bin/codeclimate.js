@@ -9,6 +9,7 @@ commander
   .version(pkg.version)
   .usage('[options] < <file>')
   .option("-S, --skip-cert", "skips verification of the chain of certificate")
+  .option("-T, --timeout <timeout>", "manually sets a timeout in ms (default: 5000)")
   .parse(process.argv);
 
 process.stdin.resume();
@@ -39,7 +40,8 @@ process.stdin.on("end", function() {
       } else {
         json['repo_token'] = repo_token;
         client.postJson(json, {
-          skip_certificate: commander.skipCert
+          skip_certificate: commander.skipCert,
+          timeout: commander.timeout
         });
       }
     }
