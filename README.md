@@ -57,9 +57,10 @@ Usage: codeclimate [options] < <file>
 
 Options:
 
-  -h, --help       output usage information
-  -V, --version    output the version number
-  -S, --skip-cert  skips verification of the chain of certificate
+  -h, --help          output usage information
+  -V, --version       output the version number
+  -S, --skip-cert     skips verification of the chain of certificate
+  -T, --timeout <ms>  manually sets a timeout (default: 5000)
 ```
 
 ## Troubleshooting
