@@ -22,7 +22,7 @@
     "async": "~1.5.2",
     "commander": "2.9.0",
     "lcov-parse": "0.0.10",
-    "request": "~2.79.0"
+    "request": "^2.8"
   },
   "repository": {
     "type": "git",
